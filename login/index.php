@@ -8,6 +8,6 @@ if($user_type == 'student') {
     header('Location: ./faculty.php');
 }
 if (isset($_SESSION['user'])) {
-    header('Location: ./dashboard.php');
+    // header('Location: ./dashboard.php');
 }
 ?>

@@ -20,13 +20,11 @@ class Faculty {
                 created_at DATETIME
             )";
 
+
         if ($this->conn->query($sql) !== TRUE) {
             die("Error creating table: " . $this->conn->error);
         }
     }
-
-    
-   
     public function registerFaculty($faculty_id, $faculty_name, $password) {
         // Check if the faculty ID is already in use
         $query = "SELECT * FROM faculty WHERE faculty_id = ?";
@@ -39,14 +37,13 @@ class Faculty {
             return array("success" => false, "message" => "Faculty member already registered.");
        
         }
-    
         // Insert the faculty member into the faculty table
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $query = "INSERT INTO faculty (faculty_id, faculty_name, password, created_at) VALUES (?, ?, ?, NOW())";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("sss", $faculty_id, $faculty_name, $hashed_password);
         if ($stmt->execute()) {
-            return array("success" => true, "message" => "Registration successful.","user"=>$stmt->get_result()->fetch_assoc());
+            return array("success" => true, "message" => "Registration successful.","user"=>$result->fetch_assoc());
     
         } else {
             return array("success" => false, "message" => "Error registering faculty member: " . $stmt->error);

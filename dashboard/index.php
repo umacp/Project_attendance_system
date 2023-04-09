@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-echo $_SESSION['user']['password'];
+echo $_SESSION['user']['faculty_name'];
 
 
 ?>

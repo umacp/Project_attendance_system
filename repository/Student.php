@@ -23,6 +23,13 @@ class Student {
                 created_at DATETIME
             )";
 
+
+
+        if ($this->conn->query($sql) !== TRUE) {
+            die("Error creating table: " . $this->conn->error);
+        }
+//inser dummy data in to students table
+        $sql = "INSERT INTO students (roll_number, password, first_name, last_name, class, branch, semester, created_at) VALUES ('1', 'password', 'Uma ', 'Maheshwari', '', 'CSE', 's3', NOW())";
         if ($this->conn->query($sql) !== TRUE) {
             die("Error creating table: " . $this->conn->error);
         }
