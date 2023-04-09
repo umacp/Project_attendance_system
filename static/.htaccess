@@ -1,0 +1,4 @@
+<Files "tailwind_input.css">
+    Order Allow,Deny
+    Deny from all
+</Files>
