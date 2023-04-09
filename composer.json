@@ -1,5 +1,15 @@
 {
+
+    "name": "umacp/attendance_system",
+    "description": "My package",
+    "version": "1.0.0",
     "require": {
-        "monolog/monolog": "3.0.*"
+        "monolog/monolog": "3.0.*",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "attendance_system\\": "/"
+        }
     }
 }

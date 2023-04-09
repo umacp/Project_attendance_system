@@ -45,7 +45,7 @@
 
             <li>
               <a
-                class="text-gray-500 transition hover:text-gray-500/75"
+                class="text-red-500 transition hover:text-gray-500/75"
                 href="/"
               >
                 About
@@ -61,7 +61,7 @@
               class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
               href="/"
             >
-              Login
+              Faculty Login
             </a>
 
             <div class="hidden sm:flex">
@@ -69,7 +69,7 @@
                 class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600"
                 href="/"
               >
-                Register
+                Student Login
               </a>
             </div>
           </div>
