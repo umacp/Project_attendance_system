@@ -1,4 +1,4 @@
-<header aria-label="Site Header" class="bg-white absolute z-10 top-0 left-0 right-0">
+<nav aria-label="Site Header" class="bg-white absolute top-0 left-0 right-0">
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <div class="flex-1 md:flex md:items-center md:gap-12">
@@ -98,4 +98,4 @@
       </div>
     </div>
   </div>
-</header>
+</nav>

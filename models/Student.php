@@ -71,10 +71,11 @@ class Student {
         $hashed_password = $row['password'];
     
         if (password_verify($password, $hashed_password)) {
-            return array("success"=>true, "message"=>"Login successful.");
+            return array("success"=>true, "message"=>"Login successful.", "user"=>$row);
         } else {
             return array("success"=>false, "message"=>"Incorrect password.");
         }
     }
+
 }
 ?>

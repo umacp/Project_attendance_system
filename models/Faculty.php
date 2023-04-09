@@ -46,7 +46,7 @@ class Faculty {
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("sss", $faculty_id, $faculty_name, $hashed_password);
         if ($stmt->execute()) {
-            return array("success" => true, "message" => "Registration successful.");
+            return array("success" => true, "message" => "Registration successful.","user"=>$stmt->get_result()->fetch_assoc());
     
         } else {
             return array("success" => false, "message" => "Error registering faculty member: " . $stmt->error);
@@ -67,7 +67,7 @@ class Faculty {
             return array("success"=>false,"message"=>"Faculty ID not found.");
         }
 
-        $row = $result->fetch_assoc();
+            $row = $result->fetch_assoc();
         $hashed_password = $row['password'];
 
         if (password_verify($password, $hashed_password)) {
@@ -76,13 +76,10 @@ class Faculty {
             $stmt = $this->conn->prepare($query);
             $stmt->bind_param("s", $faculty_id);
             $stmt->execute();
-            return array("success"=>true,"message"=>"Login Successful.");
+            return array("success"=>true,"message"=>"Login Successful.","user"=>$row);
         } else {
             return  array("success"=>false,"message"=>"incorrect Password");;
         }
     }
 }
-$user = new Faculty();
-
-echo $user->login("FACULTY01", "password");
 ?>
