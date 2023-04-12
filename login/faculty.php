@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         session_start();
         $_SESSION['user'] = $login_details['user'];
         $_SESSION['user_type'] = $user;
+        $_SESSION['loggedin'] = true;
         header("Location: ../dashboard");
     } else if ($login_details['success'] == false) {
         $error = $login_details['message'];

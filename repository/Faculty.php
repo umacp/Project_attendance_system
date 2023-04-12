@@ -8,6 +8,7 @@ class Faculty {
     public function __construct() {
         $this->conn = connection::connect();
         $this->createFacultyTable();
+        // $this->AddAdmin();
     }
 
     private function createFacultyTable() {
@@ -17,7 +18,9 @@ class Faculty {
                 faculty_name VARCHAR(255) NOT NULL default '',
                 password VARCHAR(255) NOT NULL,
                 last_login DATETIME,
-                created_at DATETIME
+                created_at DATETIME,
+                user_type VARCHAR(15) default 'faculty', 
+                is_admin BOOLEAN default false
             )";
 
 
@@ -39,7 +42,7 @@ class Faculty {
         }
         // Insert the faculty member into the faculty table
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO faculty (faculty_id, faculty_name, password, created_at) VALUES (?, ?, ?, NOW())";
+        $query = "INSERT INTO faculty (faculty_id, faculty_name, password, created_at, is_admin) VALUES (?, ?, ?,  NOW() ,true)";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("sss", $faculty_id, $faculty_name, $hashed_password);
         if ($stmt->execute()) {
@@ -47,7 +50,6 @@ class Faculty {
     
         } else {
             return array("success" => false, "message" => "Error registering faculty member: " . $stmt->error);
-   
         }
     }
     
@@ -78,5 +80,9 @@ class Faculty {
             return  array("success"=>false,"message"=>"incorrect Password");;
         }
     }
-}
+
+    private function AddAdmin(){
+       $tt =  $this->registerFaculty("cceadmin01","Administrator","cceadmin#1234)(");
+    }
+    }
 ?>
